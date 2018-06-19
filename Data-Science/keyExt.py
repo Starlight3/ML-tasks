@@ -28,5 +28,4 @@ for pair in pairs:
     cell.value = pair[1]
     i+=1
 wb.save('Java Keywords.xlsx')
-
 pdfFileObj.close()
