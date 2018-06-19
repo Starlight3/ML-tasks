@@ -20,3 +20,7 @@ cv2.imshow('img',gray)
 cv2.imwrite('Rendered Document.jpg', gray)
 text = pytesseract.image_to_string(gray, lang='eng', config='--psm 11')
 print(text)
+
+file = open("Extracted Text.txt","w")
+file.write(text)
+file.close()
