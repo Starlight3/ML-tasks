@@ -27,7 +27,7 @@ def get_last_date(rows):
     return last_date, days_gone.days
 
 def get_word_hits(rows, csvreader, fields):
-    words = ['Python','OpenCV','deadline', 'details', 'Computer Vision', 'Data', 'Machine Learning']
+    words = ['Python','OpenCV','tomorrow', 'details', 'Computer Vision', 'Data', 'Machine Learning']
     content = []
     for row in rows:
         line = row[0].split('$')[2]
@@ -62,8 +62,9 @@ wb = openpyxl.Workbook()
 sheet = wb.active
 cell = sheet.cell(row=1, column=1)
 cell.value = "Words Extracted"
-i=1
+i=2
 for word in words:
     cell = sheet.cell(row=i, column=1)
     cell.value = word
+    i+=1
 wb.save('Words Extracted.xlsx')
