@@ -1,6 +1,7 @@
 import csv
 import re
 import pandas as pd
+import openpyxl
 
 def get_unique_addr(rows):
     mails = []
@@ -55,5 +56,14 @@ mails = get_unique_addr(rows)
 last_date, days_gone = get_last_date(rows)
 words = get_word_hits(rows, csvreader, fields)
 print ("Unique addresses: {}\nlast date of conversation = {}\ndays elapsed = {}\n\
-Frequent Words = {}".format(mails, last_date, days_gone, words))
+Words Extracted = {}".format(mails, last_date, days_gone, words))
 
+wb = openpyxl.Workbook()
+sheet = wb.active
+cell = sheet.cell(row=1, column=1)
+cell.value = "Words Extracted"
+i=1
+for word in words:
+    cell = sheet.cell(row=i, column=1)
+    cell.value = word
+wb.save('Words Extracted.xlsx')
